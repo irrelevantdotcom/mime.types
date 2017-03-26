@@ -1,0 +1,31 @@
+# Additional mime types for videotex (Viewdata and Teletext) handling.
+# you can save this as ~/.mime.types 
+
+#############################################################################################################
+# Individual Frame Files :
+
+# Straight 920, 960 or 1000 byte file representing 40 chars by 23, 24 or 25 lines. 1 byte per position. 7 bit data.
+# (Other multiples of 40 bytes may be supported. BBC "Mode 7" files may have 24 bytes of garbage at the end totalling 1024 bytes.)
+# (Bit 7 may be set, particularly from some sources, but should be ignored.)
+videotex/screen
+
+# 1024 bytes consisting of a 144 byte header and a 920 byte screen (40 characters x 23 lines.)
+videotex/screen-gnome
+
+# Stream of bytes as per viewdata systems. Will include CR/LF, may include positioning characters, control codes are escape-sequences.
+# Files of this format are created by ConnectVX application when saving pages.
+videotex/stream-escaped                     vdt
+
+#############################################################################################################
+#  Multiple Frame Files (i.e. files which may contain multiple unrelated frames)
+# I am aware mime-types should really be used for encoding methods, but the frames these contain do not generally align to 
+# the individual frame formats so I feel justified in including them as separate items.
+
+# Format used by some teletext inserters. Prefix on each line indicates line contents - meta data, page identity, content, etc.
+# Can contain multiple individual screens (although often does not..)
+videotex/package-inserter                      tti
+
+# John Clark Computing "Workstation" format.
+videotex/package-workstation                    idx pic
+
+# TODO more formats eg https://code.google.com/archive/p/viewdataviewer/wikis
